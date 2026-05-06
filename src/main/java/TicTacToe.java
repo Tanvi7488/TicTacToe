@@ -1,34 +1,31 @@
-import java.util.Random;
-
 public class TicTacToe {
-    public static void main(String[] args) {
+    public static boolean isValidMove(char[][] board, int row, int col) {
 
-        Random rand = new Random();
-        int toss = rand.nextInt(2);
-
-        String player1 = "Player 1";
-        String player2 = "Player 2";
-
-        char player1Symbol, player2Symbol;
-        String currentPlayer;
-        char currentSymbol;
-
-        if (toss == 0) {
-            currentPlayer = player1;
-            player1Symbol = 'X';
-            player2Symbol = 'O';
-            currentSymbol = player1Symbol;
-        } else {
-            currentPlayer = player2;
-            player2Symbol = 'X';
-            player1Symbol = 'O';
-            currentSymbol = player2Symbol;
+        if (row < 0 || row > 2 || col < 0 || col > 2) {
+            return false;
+        }
+        if (board[row][col] != '-') {
+            return false;
         }
 
-        System.out.println("Toss Result: " + toss);
-        System.out.println(currentPlayer + " will start first.");
-        System.out.println(player1 + " symbol: " + player1Symbol);
-        System.out.println(player2 + " symbol: " + player2Symbol);
-        System.out.println("Current Player: " + currentPlayer + " (" + currentSymbol + ")");
+        return true;
+    }
+
+    public static void main(String[] args) {
+
+        char[][] board = {
+                {'-', '-', '-'},
+                {'-', 'X', '-'},
+                {'-', '-', '-'}
+        };
+
+        int row = 1;
+        int col = 1;
+
+        if (isValidMove(board, row, col)) {
+            System.out.println("Move is valid.");
+        } else {
+            System.out.println("Invalid move! Try again.");
+        }
     }
 }
