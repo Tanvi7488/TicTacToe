@@ -1,24 +1,15 @@
 public class TicTacToe {
-    static char[][] board = new char[3][3];
-    public static void main(String[] args) {
-        initializeBoard();   // fill board with '-'
-        printBoard();        // display board
+    public static int[] convertSlot(int slot) {
+        int index = slot-1;
+        int row=index/3;
+        int col=index%3;
+        return new int[]{row,col};
     }
-    static void initializeBoard() {
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
-                board[row][col] = '-';
-            }
-        }
-    }
-    static void printBoard() {
-        System.out.println("-------------");
-        for (int row = 0; row < 3; row++) {
-            for (int col = 0; col < 3; col++) {
-                System.out.print("| " + board[row][col] + " ");
-            }
-            System.out.println("|");
-            System.out.println("-------------");
-        }
+    public static void main(String[] args){
+        int slot = 5;
+        int[] result = convertSlot(slot);
+        System.out.println("Slot: " + slot);
+        System.out.println("Row: " + result[0]);
+        System.out.println("Column: " + result[1]);
     }
 }
